@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby File.read(File.join(__dir__, '.ruby-version')).strip
+
 gem 'rake'
 gem 'hanami',       '~> 1.2'
 gem 'hanami-model', '~> 1.2'
