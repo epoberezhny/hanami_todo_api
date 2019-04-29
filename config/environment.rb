@@ -1,10 +1,13 @@
 require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'
+require 'hanami/middleware/body_parser'
 require_relative '../lib/hanami_todo_api'
 require_relative '../apps/api_v1/application'
 
 Hanami.configure do
+  middleware.use Hanami::Middleware::BodyParser, :json
+
   mount ApiV1::Application, at: '/api/v1'
 
   model do
