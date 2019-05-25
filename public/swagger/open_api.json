@@ -1,0 +1,120 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Todo list API",
+    "description": "",
+    "termsOfService": "http://open-api.io/terms/",
+    "contact": {
+      "name": "API Support",
+      "url": "http://www.open-api.io/support",
+      "email": "support@open-api.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "host": "localhost:2300",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/projects": {
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "required": [
+                "title"
+              ],
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Title of a project"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {
+              "Location": {
+                "description": "",
+                "type": "string",
+                "x-example-value": "http://0.0.0.0:2300/api/v1/projects/1"
+              }
+            },
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 1,
+                  "title": "Project Title 0",
+                  "created_at": "2019-05-16T22:17:20.738Z"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "title": [
+                    "is missing",
+                    "size must be within 5 - 50"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Projects",
+      "description": ""
+    }
+  ]
+}

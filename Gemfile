@@ -3,26 +3,56 @@ source 'https://rubygems.org'
 ruby File.read(File.join(__dir__, '.ruby-version')).strip
 
 gem 'rake'
-gem 'hanami',       '~> 1.2'
-gem 'hanami-model', '~> 1.2'
 
+# http
+gem 'hanami', '~> 1.3'
+gem 'puma'
+
+# persistence
+gem 'hanami-model', '~> 1.3'
 gem 'pg'
+
+# JSON parsing/encoding
+gem 'multi_json'
+gem 'oj'
+
+# serialization
+gem 'tiny_serializer'
+
+# dependency managment
+gem 'dry-system'
+gem 'dry-system-hanami', github: 'davydovanton/dry-system-hanami'
+
+# business logic
+gem 'dry-matcher'
+gem 'dry-monads'
 
 group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading
   gem 'shotgun', platforms: :ruby
-  gem 'hanami-webconsole'
 end
 
 group :test, :development do
-  gem 'dotenv', '~> 2.0'
+  gem 'dotenv'
+
+  gem 'byebug'
+
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rspec', require: false
+
+  gem 'hanami-fabrication'
 end
 
 group :test do
+  gem 'rack-test'
   gem 'rspec'
-end
+  gem 'rspec_api_documentation'
+  gem 'rspec_junit_formatter'
 
-group :production do
-  gem 'puma'
+  gem 'dry-validation-matchers'
+  gem 'json_matchers', require: 'json_matchers/rspec'
+
+  gem 'database_cleaner', github: 'DatabaseCleaner/database_cleaner'
 end
