@@ -1,0 +1,31 @@
+{
+  "definitions": {
+    "project": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "created_at"
+      ]
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "$ref": "#/definitions/project"
+    }
+  }
+}

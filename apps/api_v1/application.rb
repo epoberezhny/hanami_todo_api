@@ -18,9 +18,9 @@ module ApiV1
       #
       # When you add new directories, remember to add them here.
       #
-      load_paths << [
-        'controllers',
-        'views'
+      load_paths << %w[
+        controllers
+        serializers
       ]
 
       # Handle exceptions with HTTP statuses (true) or don't catch them (false).
@@ -90,20 +90,12 @@ module ApiV1
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, defaults to :html
       #
-      # default_request_format :html
+      default_request_format :json
 
       # Default format for responses that don't consider the request format
       # Argument: A symbol representation of a mime type, defaults to :html
       #
-      # default_response_format :html
-
-      # HTTP Body parsers
-      # Parse non GET responses body for a specific mime type
-      # Argument: Symbol, which represent the format of the mime type
-      #             (only `:json` is supported)
-      #           Object, the parser
-      #
-      # body_parsers :json
+      default_response_format :json
 
       # When it's true and the router receives a non-encrypted request (http),
       # it redirects to the secure equivalent (https). Disabled by default.
@@ -116,11 +108,11 @@ module ApiV1
 
       # The layout to be used by all views
       #
-      layout :application # It will load ApiV1::Views::ApplicationLayout
+      # layout :application # It will load ApiV1::Views::ApplicationLayout
 
       # The relative path to templates
       #
-      templates 'templates'
+      # templates 'templates'
 
       ##
       # ASSETS
@@ -233,7 +225,7 @@ module ApiV1
       #
       #  * https://developer.mozilla.org/en-US/docs/Web/Security/CSP/CSP_policy_directives
       #
-      security.content_security_policy %{
+      security.content_security_policy %(
         form-action 'self';
         frame-ancestors 'self';
         base-uri 'self';
@@ -248,7 +240,7 @@ module ApiV1
         child-src 'self';
         frame-src 'self';
         media-src 'self'
-      }
+      )
 
       ##
       # FRAMEWORKS
@@ -261,6 +253,12 @@ module ApiV1
       controller.prepare do
         # include MyAuthentication # included in all the actions
         # before :authenticate!    # run an authentication before callback
+
+        include ApiV1::Controllers::DefaultHandler
+
+        before do
+          self.format = :json
+        end
       end
 
       # Configure the code that will yield each time ApiV1::View is included

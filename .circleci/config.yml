@@ -1,0 +1,61 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.2
+        environment:
+          HANAMI_ENV: test
+
+      - image: circleci/postgres:11-alpine
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - rails-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Install bundler
+          command: gem i bundler -v $(tail -1 Gemfile.lock | tr -d ' ')
+
+      - run:
+          name: Installing dependencies
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          key: rails-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - run:
+          name: Waiting for Postgresql
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Install postgres-client
+          command: sudo apt update && sudo apt install postgresql-client
+
+      - run:
+          name: Setup database
+          command: bundle exec hanami db prepare
+
+      - run:
+          name: RSpec
+          command: |
+            bundle exec rspec --format RspecJunitFormatter \
+                              --out /tmp/test-results/rspec/results.xml \
+                              --format progress
+
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+
+      - store_test_results:
+          path: /tmp/test-results
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
