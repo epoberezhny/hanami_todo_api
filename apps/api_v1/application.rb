@@ -97,11 +97,6 @@ module ApiV1
       #
       default_response_format :json
 
-      # When it's true and the router receives a non-encrypted request (http),
-      # it redirects to the secure equivalent (https). Disabled by default.
-      #
-      # force_ssl true
-
       ##
       # TEMPLATES
       #

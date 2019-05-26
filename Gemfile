@@ -49,6 +49,8 @@ group :test do
   gem 'rack-test'
   gem 'rspec'
   gem 'rspec_api_documentation'
+
+  gem 'fuubar'
   gem 'rspec_junit_formatter'
 
   gem 'dry-validation-matchers'
