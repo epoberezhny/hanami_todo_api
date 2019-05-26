@@ -13,7 +13,7 @@ module ApiV1::Controllers::Projects
 
     def handler
       lambda do |m|
-        m.success do |resource|
+        m.success do
           self.status = 204
         end
 
