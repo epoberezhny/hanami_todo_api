@@ -56,12 +56,12 @@
                   {
                     "id": 2,
                     "title": "Project Title 1",
-                    "created_at": "2019-05-26T19:33:57.962Z"
+                    "created_at": "2019-05-26T20:20:17.629Z"
                   },
                   {
                     "id": 3,
                     "title": "Project Title 2",
-                    "created_at": "2019-05-26T19:33:57.964Z"
+                    "created_at": "2019-05-26T20:20:17.631Z"
                   }
                 ]
               }
@@ -106,7 +106,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Success",
+            "description": "Created",
             "schema": {
               "description": "",
               "type": "object",
@@ -124,7 +124,7 @@
                 "data": {
                   "id": 1,
                   "title": "Project Title 0",
-                  "created_at": "2019-05-26T19:33:57.924Z"
+                  "created_at": "2019-05-26T20:20:17.589Z"
                 }
               }
             }
@@ -188,10 +188,53 @@
                 "data": {
                   "id": 4,
                   "title": "Project Title 3",
-                  "created_at": "2019-05-26T19:33:57.977Z"
+                  "created_at": "2019-05-26T20:20:17.644Z"
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {}
           },
           "404": {
             "description": "Not found",
@@ -261,7 +304,7 @@
                 "data": {
                   "id": 5,
                   "title": "Project Title 5",
-                  "created_at": "2019-05-26T19:33:57.996Z"
+                  "created_at": "2019-05-26T20:20:17.661Z"
                 }
               }
             }
