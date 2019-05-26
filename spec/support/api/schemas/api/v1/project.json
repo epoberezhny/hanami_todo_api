@@ -1,4 +1,5 @@
 {
+  "id": "file:/project.json",
   "definitions": {
     "project": {
       "type": "object",

@@ -24,5 +24,37 @@ RSpec.describe 'Projects', type: :request do
         end
       end
     end
+
+    get '/api/v1/projects' do
+      before { Fabricate.times(2, :project) }
+
+      context '200' do
+        example_request 'Success' do
+          expect(status).to eq(200)
+          expect(response_body).to match_json_schema('api/v1/projects')
+        end
+      end
+    end
+
+    get '/api/v1/projects/:id' do
+      let(:project) { Fabricate.create(:project) }
+
+      context '200' do
+        let(:id) { project.id }
+
+        example_request 'Success' do
+          expect(status).to eq(200)
+          expect(response_body).to match_json_schema('api/v1/project')
+        end
+      end
+
+      context '404' do
+        let(:id) { 0 }
+
+        example_request 'Not found' do
+          expect(status).to eq(404)
+        end
+      end
+    end
   end
 end

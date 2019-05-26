@@ -3,12 +3,10 @@ module Projects
     class Create < ::Libs::Operation
       include ::Import[
         repository: 'repositories.project',
-        contract: 'projects.contracts.create',
-        policy: 'projects.policy'
+        contract: 'projects.contracts.create'
       ]
 
       def call(params:, **)
-        yield authorize
         params = yield validate(params)
         project = yield persist(params)
 
@@ -16,11 +14,6 @@ module Projects
       end
 
       private
-
-      def authorize
-        result = policy.create?
-        result ? Success() : Failure(::Libs::Error.new(status: :forbidden))
-      end
 
       def validate(params)
         result = contract.call(params.to_h)
