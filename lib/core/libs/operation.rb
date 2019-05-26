@@ -24,5 +24,18 @@ module Libs
     def call(*)
       raise NotImplementedError
     end
+
+    private
+
+    def validate(contract, params)
+      result = contract.call(params.to_h)
+
+      if result.success?
+        Success(result.output)
+      else
+        payload = { errors: result.errors }
+        Failure(::Libs::Error.new(status: :unprocessable, payload: payload))
+      end
+    end
   end
 end

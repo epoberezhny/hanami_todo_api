@@ -7,27 +7,16 @@ module Projects
       ]
 
       def call(params:, **)
-        params = yield validate(params)
-        project = yield persist(params)
+        attrs = yield validate(contract, params)
+        project = yield persist(attrs)
 
         Success(project)
       end
 
       private
 
-      def validate(params)
-        result = contract.call(params.to_h)
-
-        if result.success?
-          Success(result.output)
-        else
-          payload = { errors: result.errors }
-          Failure(::Libs::Error.new(status: :unprocessable, payload: payload))
-        end
-      end
-
-      def persist(params)
-        Success(repository.create(params))
+      def persist(attrs)
+        Success(repository.create(attrs))
       end
     end
   end

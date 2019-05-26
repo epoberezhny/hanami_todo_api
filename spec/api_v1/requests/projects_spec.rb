@@ -56,5 +56,39 @@ RSpec.describe 'Projects', type: :request do
         end
       end
     end
+
+    patch '/api/v1/projects/:id' do
+      parameter :title, 'Title of a project', in: :body, required: true
+
+      let(:project) { Fabricate.create(:project) }
+      let(:project_attrs) { Fabricate.attributes_for(:project) }
+
+      let(:id) { project.id }
+      let(:raw_post) { project_attrs.to_json }
+
+      context '200' do
+        example_request 'Success' do
+          expect(status).to eq(200)
+          expect(response_body).to match_json_schema('api/v1/project')
+        end
+      end
+
+      context '404' do
+        let(:id) { 0 }
+
+        example_request 'Not found' do
+          expect(status).to eq(404)
+        end
+      end
+
+      context '422' do
+        let(:project_attrs) { Fabricate.attributes_for(:invalid_project) }
+
+        example_request 'Unprocessable' do
+          expect(status).to eq(422)
+          expect(response_body).to match_json_schema('api/v1/errors')
+        end
+      end
+    end
   end
 end
