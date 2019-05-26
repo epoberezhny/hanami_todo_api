@@ -1,6 +1,8 @@
 require 'dry/monads/result'
 require 'dry/monads/do'
 
+require_relative 'operation/validate'
+
 module Libs
   class Operation
     include Dry::Monads::Result::Mixin
@@ -28,14 +30,7 @@ module Libs
     private
 
     def validate(contract, params)
-      result = contract.call(params.to_h)
-
-      if result.success?
-        Success(result.output)
-      else
-        payload = { errors: result.errors }
-        Failure(::Libs::Error.new(status: :unprocessable, payload: payload))
-      end
+      Validate.call(contract, params)
     end
   end
 end
