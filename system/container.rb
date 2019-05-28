@@ -15,9 +15,11 @@ class Container < Dry::System::Container
 
   register_folder! 'core/repositories'
 
-  register_folder! 'projects/contracts', resolver: ITSELF_RESOLVER
-  register_folder! 'projects/operations'
-  register_file! 'projects/policy'
+  %w[projects tasks].each do |domain|
+    register_folder! "#{domain}/contracts", resolver: ITSELF_RESOLVER
+    register_folder! "#{domain}/operations"
+    register_file! "#{domain}/policy"
+  end
 
   configure do |config|
     config.env = Hanami.env

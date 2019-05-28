@@ -1,7 +1,7 @@
 RSpec.describe Projects::Operations::Update, type: :operation do
   subject(:result) { operation.call(params: project_attrs) }
 
-  let(:operation) { described_class.new(repository: project_repo) }
+  let(:operation) { described_class.new(project_repo: project_repo) }
   let(:project_repo) { instance_double('ProjectRepository', find: project, update: updated_project) }
 
   let(:project_attrs) { Fabricate.attributes_for(:project) }

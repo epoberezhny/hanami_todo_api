@@ -58,7 +58,7 @@ RSpec.describe 'Projects', type: :request do
     end
 
     patch '/api/v1/projects/:id' do
-      parameter :title, 'Title of a project', in: :body, required: true
+      parameter :title, 'Title of the project', in: :body
 
       let(:project) { Fabricate.create(:project) }
       let(:project_attrs) { Fabricate.attributes_for(:project) }

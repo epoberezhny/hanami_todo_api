@@ -27,6 +27,8 @@ gem 'dry-system-hanami', github: 'davydovanton/dry-system-hanami'
 gem 'dry-matcher'
 gem 'dry-monads'
 
+gem 'i18n'
+
 group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading

@@ -2,6 +2,8 @@ require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'
 require 'hanami/middleware/body_parser'
+require 'dry/validation/messages/i18n'
+
 require_relative '../system/import'
 require_relative '../apps/api_v1/application'
 
