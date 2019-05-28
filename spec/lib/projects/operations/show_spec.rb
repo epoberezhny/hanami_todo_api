@@ -1,7 +1,7 @@
 RSpec.describe Projects::Operations::Show, type: :operation do
   subject(:result) { operation.call(params: {}) }
 
-  let(:operation) { described_class.new(repository: project_repo) }
+  let(:operation) { described_class.new(project_repo: project_repo) }
   let(:project_repo) { instance_double('ProjectRepository', find: project) }
 
   context 'when project exists' do

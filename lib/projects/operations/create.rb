@@ -2,21 +2,14 @@ module Projects
   module Operations
     class Create < ::Libs::Operation
       include ::Import[
-        repository: 'repositories.project',
+        project_repo: 'repositories.project',
         contract: 'projects.contracts.create'
       ]
 
       def call(params:, **)
-        attrs = yield validate(contract, params)
-        project = yield persist(attrs)
+        attrs = yield validate(params, contract)
 
-        Success(project)
-      end
-
-      private
-
-      def persist(attrs)
-        Success(repository.create(attrs))
+        Success(project_repo.create(attrs))
       end
     end
   end

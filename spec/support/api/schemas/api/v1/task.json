@@ -1,0 +1,45 @@
+{
+  "id": "file:/task.json",
+  "definitions": {
+    "task": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "done": {
+          "type": "boolean"
+        },
+        "position": {
+          "type": "integer"
+        },
+        "deadline": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "done",
+        "position",
+        "created_at"
+      ]
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "$ref": "#/definitions/task"
+    }
+  }
+}

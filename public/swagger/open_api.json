@@ -56,12 +56,12 @@
                   {
                     "id": 2,
                     "title": "Project Title 1",
-                    "created_at": "2019-05-26T20:20:17.629Z"
+                    "created_at": "2019-05-28T22:34:43.389Z"
                   },
                   {
                     "id": 3,
                     "title": "Project Title 2",
-                    "created_at": "2019-05-26T20:20:17.631Z"
+                    "created_at": "2019-05-28T22:34:43.392Z"
                   }
                 ]
               }
@@ -124,7 +124,7 @@
                 "data": {
                   "id": 1,
                   "title": "Project Title 0",
-                  "created_at": "2019-05-26T20:20:17.589Z"
+                  "created_at": "2019-05-28T22:34:43.361Z"
                 }
               }
             }
@@ -188,7 +188,7 @@
                 "data": {
                   "id": 4,
                   "title": "Project Title 3",
-                  "created_at": "2019-05-26T20:20:17.644Z"
+                  "created_at": "2019-05-28T22:34:43.412Z"
                 }
               }
             }
@@ -270,14 +270,11 @@
             "required": false,
             "schema": {
               "description": "",
-              "required": [
-                "title"
-              ],
               "type": "object",
               "properties": {
                 "title": {
                   "type": "string",
-                  "description": "Title of a project"
+                  "description": "Title of the project"
                 }
               }
             }
@@ -304,7 +301,7 @@
                 "data": {
                   "id": 5,
                   "title": "Project Title 5",
-                  "created_at": "2019-05-26T20:20:17.661Z"
+                  "created_at": "2019-05-28T22:34:43.432Z"
                 }
               }
             }
@@ -341,11 +338,417 @@
         "deprecated": false,
         "security": []
       }
+    },
+    "/api/v1/projects/{project_id}/tasks": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 2,
+                    "title": "Task Title 2",
+                    "done": false,
+                    "position": 2,
+                    "deadline": null,
+                    "created_at": "2019-05-28T22:34:43.571Z"
+                  },
+                  {
+                    "id": 3,
+                    "title": "Task Title 3",
+                    "done": false,
+                    "position": 3,
+                    "deadline": null,
+                    "created_at": "2019-05-28T22:34:43.574Z"
+                  }
+                ]
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "required": [
+                "title"
+              ],
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Title of a task"
+                },
+                "deadline": {
+                  "type": "string",
+                  "description": "Deadline of a task"
+                }
+              }
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {
+              "Location": {
+                "description": "",
+                "type": "string",
+                "x-example-value": "http://0.0.0.0:2300/api/v1/projects/8/tasks/1"
+              }
+            },
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 1,
+                  "title": "Task Title 0",
+                  "done": false,
+                  "position": 1,
+                  "deadline": null,
+                  "created_at": "2019-05-28T22:34:43.528Z"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "422": {
+            "description": "Unprocessable",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "title": [
+                    "is missing"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/api/v1/projects/{project_id}/tasks/{id}": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 6,
+                  "title": "Task Title 6",
+                  "done": false,
+                  "position": 6,
+                  "deadline": null,
+                  "created_at": "2019-05-28T22:34:43.618Z"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "delete": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "patch": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Title of the task"
+                },
+                "done": {
+                  "type": "string",
+                  "description": "Status of the task"
+                },
+                "position": {
+                  "type": "string",
+                  "description": "Position of the task"
+                },
+                "deadline": {
+                  "type": "string",
+                  "description": "Deadline of the task"
+                }
+              }
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 7,
+                  "title": "Task Title 8",
+                  "done": false,
+                  "position": 1,
+                  "deadline": null,
+                  "created_at": "2019-05-28T22:34:43.650Z"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "422": {
+            "description": "Unprocessable",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "title": [
+                    "size cannot be greater than 50"
+                  ],
+                  "position": [
+                    "must be less than tasks count"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
     }
   },
   "tags": [
     {
       "name": "Projects",
+      "description": ""
+    },
+    {
+      "name": "Tasks",
       "description": ""
     }
   ]

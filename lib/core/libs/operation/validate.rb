@@ -3,7 +3,8 @@ module Libs
     class Validate
       extend Dry::Monads::Result::Mixin
 
-      def self.call(contract, params)
+      def self.call(params, contract, with = {})
+        contract = contract.with(with) unless with.empty?
         result = contract.call(params.to_h)
 
         if result.success?

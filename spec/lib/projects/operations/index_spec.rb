@@ -1,7 +1,7 @@
 RSpec.describe Projects::Operations::Index, type: :operation do
   subject(:result) { operation.call }
 
-  let(:operation) { described_class.new(repository: project_repo) }
+  let(:operation) { described_class.new(project_repo: project_repo) }
   let(:project_repo) { instance_double('ProjectRepository', all: projects) }
 
   let(:projects) { Fabricate.build_times(2, :project) }

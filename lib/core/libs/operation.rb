@@ -2,6 +2,7 @@ require 'dry/monads/result'
 require 'dry/monads/do'
 
 require_relative 'operation/validate'
+require_relative 'operation/find_entity'
 
 module Libs
   class Operation
@@ -29,8 +30,12 @@ module Libs
 
     private
 
-    def validate(contract, params)
-      Validate.call(contract, params)
+    def validate(*args)
+      Validate.call(*args)
+    end
+
+    def find_entity(*args)
+      FindEntity.call(*args)
     end
   end
 end
