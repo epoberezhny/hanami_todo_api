@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "$ref": "file:/api/auth/user.json#/definitions/user"
+    },
+    "meta": {
+      "type": "object",
+      "$ref": "file:/api/auth/tokens.json#/definitions/tokens"
+    }
+  },
+  "required": [
+    "data",
+    "meta"
+  ]
+}

@@ -1,10 +1,11 @@
 RSpec.describe Projects::Operations::Create, type: :operation do
-  subject(:result) { operation.call(params: project_attrs) }
+  subject(:result) { operation.call(params: project_attrs, user_id: user_id) }
 
   let(:operation) { described_class.new(project_repo: project_repo) }
   let(:project_repo) { instance_double('ProjectRepository', create: project) }
 
   let(:project_attrs) { Fabricate.attributes_for(:project) }
+  let(:user_id) { 0 }
   let(:project) { Fabricate.build(:project, project_attrs) }
 
   context 'when payload is valid' do

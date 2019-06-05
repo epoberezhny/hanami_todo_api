@@ -89,3 +89,5 @@ en:
             range: length must be within %{size_left} - %{size_right}
 
     valid_position?: must be less than tasks count
+
+    unique_username?: must be unique

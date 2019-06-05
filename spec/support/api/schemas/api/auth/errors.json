@@ -1,0 +1,15 @@
+{
+  "definitions": {
+    "error": {
+      "type": "object"
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "errors": {
+      "type": "object",
+      "$ref": "#/definitions/error"
+    }
+  }
+}

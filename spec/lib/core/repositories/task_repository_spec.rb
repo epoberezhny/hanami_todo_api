@@ -1,8 +1,8 @@
 RSpec.describe TaskRepository, type: :repo do
   subject(:repo) { described_class.new }
 
-  let(:project_1) { Fabricate.create(:project) }
-  let(:project_2) { Fabricate.create(:project) }
+  let(:project_1) { Fabricate.create(:project, user_id: user.id) }
+  let(:project_2) { Fabricate.create(:project, user_id: user.id) }
 
   let!(:task_1_1) { Fabricate.create(:task, project_id: project_1.id) }
   let!(:task_1_2) { Fabricate.create(:task, project_id: project_1.id) }
@@ -11,6 +11,12 @@ RSpec.describe TaskRepository, type: :repo do
   describe 'by_project_id' do
     it 'finds tasks by project_id' do
       expect(repo.by_project_id(project_1.id)).to match_array([task_1_1, task_1_2])
+    end
+  end
+
+  describe 'find_by_project_id' do
+    it 'finds task by project_id and id' do
+      expect(repo.find_by_project_id(project_1.id, task_1_1.id)).to eq(task_1_1)
     end
   end
 

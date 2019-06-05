@@ -6,7 +6,7 @@ module ApiV1::Controllers::Tasks
     ]
 
     def call(params)
-      operation.call(params: params, &handler)
+      operation.call(params: params, user_id: payload['user_id'], &handler)
     end
 
     private
@@ -19,10 +19,6 @@ module ApiV1::Controllers::Tasks
 
         super.call(m)
       end
-    end
-
-    def serializer_class
-      ::ApiV1::TaskSerializer
     end
   end
 end

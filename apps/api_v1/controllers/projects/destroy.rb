@@ -6,7 +6,7 @@ module ApiV1::Controllers::Projects
     ]
 
     def call(params)
-      operation.call(params: params, &handler)
+      operation.call(params: params, user_id: payload['user_id'], &handler)
     end
 
     private
@@ -19,10 +19,6 @@ module ApiV1::Controllers::Projects
 
         super.call(m)
       end
-    end
-
-    def serializer_class
-      ::ApiV1::ProjectSerializer
     end
   end
 end

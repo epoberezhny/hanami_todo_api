@@ -14,10 +14,11 @@ RSpec.describe Tasks::Contracts::Update, type: :dry_validation do
 
   describe 'position' do
     describe 'valid_position?' do
-      it 'is  invalid' do
+      it 'is invalid' do
+        expect(task_repo).to receive(:count_by_project_id).with(project_id)
+
         result = contract.call(position: 11)
 
-        expect(task_repo).to have_received(:count_by_project_id).with(project_id)
         expect(result.errors[:position]).to include(I18n.t('errors.valid_position?'))
       end
     end
@@ -25,7 +26,7 @@ RSpec.describe Tasks::Contracts::Update, type: :dry_validation do
     describe 'gt?' do
       let(:min) { 0 }
 
-      it 'is  invalid' do
+      it 'is invalid' do
         result = contract.call(position: min)
         expect(result.errors[:position]).to include(I18n.t('errors.gt?', num: min))
       end

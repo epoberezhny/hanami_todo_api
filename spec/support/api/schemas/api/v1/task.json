@@ -1,5 +1,5 @@
 {
-  "id": "file:/task.json",
+  "id": "file:/api/v1/task.json",
   "definitions": {
     "task": {
       "type": "object",
@@ -41,5 +41,8 @@
       "type": "object",
       "$ref": "#/definitions/task"
     }
-  }
+  },
+  "required": [
+    "data"
+  ]
 }

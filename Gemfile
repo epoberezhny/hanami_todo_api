@@ -12,6 +12,8 @@ gem 'puma'
 gem 'hanami-model', '~> 1.3'
 gem 'pg'
 
+gem 'redis'
+
 # JSON parsing/encoding
 gem 'multi_json'
 gem 'oj'
@@ -28,6 +30,10 @@ gem 'dry-matcher'
 gem 'dry-monads'
 
 gem 'i18n'
+
+# auth
+gem 'bcrypt'
+gem 'jwt_sessions'
 
 group :development do
   # Code reloading

@@ -4,8 +4,11 @@
     "data": {
       "type": "array",
       "items": {
-        "$ref": "file:/project.json#/definitions/project"
+        "$ref": "file:/api/v1/project.json#/definitions/project"
       }
     }
-  }
+  },
+  "required": [
+    "data"
+  ]
 }

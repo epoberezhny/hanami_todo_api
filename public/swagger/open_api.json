@@ -27,6 +27,328 @@
     "application/json"
   ],
   "paths": {
+    "/api/auth/refresh": {
+      "post": {
+        "tags": [
+          "Refresh"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "X_Refresh_Token",
+            "in": "header",
+            "description": " x refresh token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "csrf": "7lhHnvPGot329KD8E0s54RJ0IDlM0SrO3wQ+vQXLlFQsAuUOgnYLBx9uVOpXehHgr4OCH4fzGr7HpwFsG4DLLw==",
+                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTk3ODA5OTIsInVzZXJfaWQiOjEsInVpZCI6IjVhNGFiNzExLTNhOTktNGRkYy04NjY2LWM3MzMwZDVmY2RkNiIsImV4cCI6MTU1OTc4MDk5Mn0.-F_XP_AVHCmUDNpYlkQOBFU9PRb47w2Y2CVflIWMtUI",
+                  "access_expires_at": "2019-06-06T03:29:52.000+03:00"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/api/auth/registration": {
+      "post": {
+        "tags": [
+          "Registration"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "required": [
+                "username"
+              ],
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "description": "Username"
+                },
+                "password": {
+                  "type": "string",
+                  "description": "Password"
+                },
+                "password_confirmation": {
+                  "type": "string",
+                  "description": "Password confirmation"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 2,
+                  "username": "username_1",
+                  "created_at": "2019-06-05T23:29:52.794Z"
+                },
+                "meta": {
+                  "csrf": "2sEm8L7GQwaLlyzhKaMeVR8MbC72YqivnBAgcHPT8arIBZyQKVskV7o9NuVOsGGLVdnxL3yJNbdQSgkC4CBSfw==",
+                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTk3ODA5OTIsInVzZXJfaWQiOjIsInVpZCI6IjRiNmJjMWFmLWE2NzQtNDU0OS1hYTBmLWJjMDgxNWYyMTkzZSIsImV4cCI6MTU1OTc4MDk5Mn0.ygeCN8R95h4Archyh6GD8ehovjP-Zv_xZ3m9pYWbovI",
+                  "access_expires_at": "2019-06-06T03:29:52.000+03:00",
+                  "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTk3ODA5OTIsInVzZXJfaWQiOjIsInVpZCI6IjM0M2JhZGQwLTFlOTQtNDM5NC1hYWRlLWE5Y2UxZTlhN2YyMiIsImV4cCI6MTU2MDM4MjE5Mn0.igpJk78HK2k6lJp6fS6f0lwfG3OZzbsjo_k3Hv7se5U",
+                  "refresh_expires_at": "2019-06-13T02:29:52.000+03:00"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "username": [
+                    "is missing"
+                  ],
+                  "password": [
+                    "is missing"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/api/auth/session": {
+      "get": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 4,
+                  "username": "username_3",
+                  "created_at": "2019-06-05T23:29:53.596Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "required": [
+                "username"
+              ],
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "description": "Username"
+                },
+                "password": {
+                  "type": "string",
+                  "description": "Password"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 3,
+                  "username": "username_2",
+                  "created_at": "2019-06-05T23:29:53.091Z"
+                },
+                "meta": {
+                  "csrf": "OmmTsk1FCG+0N8TqvmFGBmp8hvE9XywNzGGdwP5WEDMyppCULUWkbYekFUVB4I/h4k+/Bv+cpFKtlv2qBpCnUg==",
+                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTk3ODA5OTMsInVzZXJfaWQiOjMsInVpZCI6IjA5YjFjNWE0LTRkMTMtNDMzNy1hYzM2LTY4NjIxNjkxZWZjMyIsImV4cCI6MTU1OTc4MDk5M30.gY_YZzpIWlvw9DrnihpndseVCx-hjn4mOkXbWqRzKZc",
+                  "access_expires_at": "2019-06-06T03:29:53.000+03:00",
+                  "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTk3ODA5OTMsInVzZXJfaWQiOjMsInVpZCI6IjdiMjZlN2E5LWI4MTItNDA4Ni1iODJiLTFiZjc4YzVhNDFlNCIsImV4cCI6MTU2MDM4MjE5M30.tSOpt36KrVLtV4PwCLfGf7Xr4x_KYrD0eNKYYv40R6U",
+                  "refresh_expires_at": "2019-06-13T02:29:53.000+03:00"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "delete": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "X_Refresh_Token",
+            "in": "header",
+            "description": " x refresh token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
     "/api/v1/projects": {
       "get": {
         "tags": [
@@ -56,20 +378,34 @@
                   {
                     "id": 2,
                     "title": "Project Title 1",
-                    "created_at": "2019-05-28T22:34:43.389Z"
+                    "created_at": "2019-06-05T23:29:54.682Z"
                   },
                   {
                     "id": 3,
                     "title": "Project Title 2",
-                    "created_at": "2019-05-28T22:34:43.392Z"
+                    "created_at": "2019-06-05T23:29:54.685Z"
                   }
                 ]
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
           }
         },
         "deprecated": false,
-        "security": []
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -124,10 +460,20 @@
                 "data": {
                   "id": 1,
                   "title": "Project Title 0",
-                  "created_at": "2019-05-28T22:34:43.361Z"
+                  "created_at": "2019-06-05T23:29:54.139Z"
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
           },
           "422": {
             "description": "Unprocessable",
@@ -149,7 +495,11 @@
           }
         },
         "deprecated": false,
-        "security": []
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       }
     },
     "/api/v1/projects/{id}": {
@@ -186,12 +536,32 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": 4,
-                  "title": "Project Title 3",
-                  "created_at": "2019-05-28T22:34:43.412Z"
+                  "id": 6,
+                  "title": "Project Title 5",
+                  "created_at": "2019-06-05T23:29:55.207Z"
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
           },
           "404": {
             "description": "Not found",
@@ -205,7 +575,11 @@
           }
         },
         "deprecated": false,
-        "security": []
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -236,6 +610,26 @@
             },
             "headers": {}
           },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
           "404": {
             "description": "Not found",
             "schema": {
@@ -248,7 +642,11 @@
           }
         },
         "deprecated": false,
-        "security": []
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -299,12 +697,32 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": 5,
-                  "title": "Project Title 5",
-                  "created_at": "2019-05-28T22:34:43.432Z"
+                  "id": 9,
+                  "title": "Project Title 9",
+                  "created_at": "2019-06-05T23:29:56.247Z"
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
           },
           "404": {
             "description": "Not found",
@@ -336,7 +754,11 @@
           }
         },
         "deprecated": false,
-        "security": []
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       }
     },
     "/api/v1/projects/{project_id}/tasks": {
@@ -375,23 +797,43 @@
                 "data": [
                   {
                     "id": 2,
-                    "title": "Task Title 2",
+                    "title": "Task Title 4",
                     "done": false,
-                    "position": 2,
+                    "position": 4,
                     "deadline": null,
-                    "created_at": "2019-05-28T22:34:43.571Z"
+                    "created_at": "2019-06-05T23:29:59.930Z"
                   },
                   {
                     "id": 3,
-                    "title": "Task Title 3",
+                    "title": "Task Title 5",
                     "done": false,
-                    "position": 3,
+                    "position": 5,
                     "deadline": null,
-                    "created_at": "2019-05-28T22:34:43.574Z"
+                    "created_at": "2019-06-05T23:29:59.933Z"
                   }
                 ]
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
           },
           "404": {
             "description": "Not found",
@@ -405,7 +847,11 @@
           }
         },
         "deprecated": false,
-        "security": []
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -463,7 +909,7 @@
               "Location": {
                 "description": "",
                 "type": "string",
-                "x-example-value": "http://0.0.0.0:2300/api/v1/projects/8/tasks/1"
+                "x-example-value": "http://0.0.0.0:2300/api/v1/projects/16/tasks/1"
               }
             },
             "examples": {
@@ -474,10 +920,30 @@
                   "done": false,
                   "position": 1,
                   "deadline": null,
-                  "created_at": "2019-05-28T22:34:43.528Z"
+                  "created_at": "2019-06-05T23:29:58.641Z"
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
           },
           "404": {
             "description": "Not found",
@@ -509,7 +975,11 @@
           }
         },
         "deprecated": false,
-        "security": []
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       }
     },
     "/api/v1/projects/{project_id}/tasks/{id}": {
@@ -553,15 +1023,35 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": 6,
-                  "title": "Task Title 6",
+                  "id": 10,
+                  "title": "Task Title 12",
                   "done": false,
-                  "position": 6,
+                  "position": 12,
                   "deadline": null,
-                  "created_at": "2019-05-28T22:34:43.618Z"
+                  "created_at": "2019-06-05T23:30:01.002Z"
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
           },
           "404": {
             "description": "Not found",
@@ -575,7 +1065,11 @@
           }
         },
         "deprecated": false,
-        "security": []
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -613,6 +1107,26 @@
             },
             "headers": {}
           },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
           "404": {
             "description": "Not found",
             "schema": {
@@ -625,7 +1139,11 @@
           }
         },
         "deprecated": false,
-        "security": []
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       },
       "patch": {
         "tags": [
@@ -695,15 +1213,35 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "id": 7,
-                  "title": "Task Title 8",
+                  "id": 13,
+                  "title": "Task Title 16",
                   "done": false,
                   "position": 1,
                   "deadline": null,
-                  "created_at": "2019-05-28T22:34:43.650Z"
+                  "created_at": "2019-06-05T23:30:02.041Z"
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
           },
           "404": {
             "description": "Not found",
@@ -738,11 +1276,35 @@
           }
         },
         "deprecated": false,
-        "security": []
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
       }
     }
   },
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "description": "",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
   "tags": [
+    {
+      "name": "Refresh",
+      "description": ""
+    },
+    {
+      "name": "Registration",
+      "description": ""
+    },
+    {
+      "name": "Session",
+      "description": ""
+    },
     {
       "name": "Projects",
       "description": ""

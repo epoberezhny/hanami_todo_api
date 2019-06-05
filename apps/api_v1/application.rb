@@ -1,6 +1,8 @@
 require 'hanami/helpers'
 require 'hanami/assets'
 
+require_relative '../../helpers/authentication'
+
 module ApiV1
   class Application < Hanami::Application
     configure do
@@ -112,40 +114,40 @@ module ApiV1
       ##
       # ASSETS
       #
-      assets do
-        # JavaScript compressor
-        #
-        # Supported engines:
-        #
-        #   * :builtin
-        #   * :uglifier
-        #   * :yui
-        #   * :closure
-        #
-        # See: http://hanamirb.org/guides/assets/compressors
-        #
-        # In order to skip JavaScript compression comment the following line
-        javascript_compressor :builtin
+      # assets do
+      #   # JavaScript compressor
+      #   #
+      #   # Supported engines:
+      #   #
+      #   #   * :builtin
+      #   #   * :uglifier
+      #   #   * :yui
+      #   #   * :closure
+      #   #
+      #   # See: http://hanamirb.org/guides/assets/compressors
+      #   #
+      #   # In order to skip JavaScript compression comment the following line
+      #   javascript_compressor :builtin
 
-        # Stylesheet compressor
-        #
-        # Supported engines:
-        #
-        #   * :builtin
-        #   * :yui
-        #   * :sass
-        #
-        # See: http://hanamirb.org/guides/assets/compressors
-        #
-        # In order to skip stylesheet compression comment the following line
-        stylesheet_compressor :builtin
+      #   # Stylesheet compressor
+      #   #
+      #   # Supported engines:
+      #   #
+      #   #   * :builtin
+      #   #   * :yui
+      #   #   * :sass
+      #   #
+      #   # See: http://hanamirb.org/guides/assets/compressors
+      #   #
+      #   # In order to skip stylesheet compression comment the following line
+      #   stylesheet_compressor :builtin
 
-        # Specify sources for assets
-        #
-        sources << [
-          'assets'
-        ]
-      end
+      #   # Specify sources for assets
+      #   #
+      #   sources << [
+      #     'assets'
+      #   ]
+      # end
 
       ##
       # SECURITY
@@ -249,21 +251,24 @@ module ApiV1
         # include MyAuthentication # included in all the actions
         # before :authenticate!    # run an authentication before callback
 
-        include ApiV1::Controllers::DefaultHandler
+        include ::ApiV1::Controllers::DefaultHandler
+        include ::Helpers::Authentication
 
         before do
           self.format = :json
         end
+
+        before :authorize_by_access_header!
       end
 
       # Configure the code that will yield each time ApiV1::View is included
       # This is useful for sharing common functionality
       #
       # See: http://www.rubydoc.info/gems/hanami-view#Configuration
-      view.prepare do
-        include Hanami::Helpers
-        include ApiV1::Assets::Helpers
-      end
+      # view.prepare do
+      #   include Hanami::Helpers
+      #   # include ApiV1::Assets::Helpers
+      # end
     end
 
     ##
@@ -271,7 +276,7 @@ module ApiV1
     #
     configure :development do
       # Don't handle exceptions, render the stack trace
-      handle_exceptions false
+      # handle_exceptions false
     end
 
     ##
@@ -279,7 +284,7 @@ module ApiV1
     #
     configure :test do
       # Don't handle exceptions, render the stack trace
-      handle_exceptions false
+      # handle_exceptions false
     end
 
     ##
@@ -290,30 +295,30 @@ module ApiV1
       # host   'example.org'
       # port   443
 
-      assets do
-        # Don't compile static assets in production mode (eg. Sass, ES6)
-        #
-        # See: http://www.rubydoc.info/gems/hanami-assets#Configuration
-        compile false
+      # assets do
+      #   # Don't compile static assets in production mode (eg. Sass, ES6)
+      #   #
+      #   # See: http://www.rubydoc.info/gems/hanami-assets#Configuration
+      #   compile false
 
-        # Use fingerprint file name for asset paths
-        #
-        # See: http://hanamirb.org/guides/assets/overview
-        fingerprint true
+      #   # Use fingerprint file name for asset paths
+      #   #
+      #   # See: http://hanamirb.org/guides/assets/overview
+      #   fingerprint true
 
-        # Content Delivery Network (CDN)
-        #
-        # See: http://hanamirb.org/guides/assets/content-delivery-network
-        #
-        # scheme 'https'
-        # host   'cdn.example.org'
-        # port   443
+      #   # Content Delivery Network (CDN)
+      #   #
+      #   # See: http://hanamirb.org/guides/assets/content-delivery-network
+      #   #
+      #   # scheme 'https'
+      #   # host   'cdn.example.org'
+      #   # port   443
 
-        # Subresource Integrity
-        #
-        # See: http://hanamirb.org/guides/assets/content-delivery-network/#subresource-integrity
-        subresource_integrity :sha256
-      end
+      #   # Subresource Integrity
+      #   #
+      #   # See: http://hanamirb.org/guides/assets/content-delivery-network/#subresource-integrity
+      #   subresource_integrity :sha256
+      # end
     end
   end
 end

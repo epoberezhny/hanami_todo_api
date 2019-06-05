@@ -5,8 +5,8 @@ module Projects
         project_repo: 'repositories.project'
       ]
 
-      def call(*)
-        Success(project_repo.all)
+      def call(user_id:, **)
+        Success(project_repo.by_user_id(user_id))
       end
     end
   end

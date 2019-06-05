@@ -6,10 +6,12 @@ require 'dry/validation/messages/i18n'
 
 require_relative '../system/import'
 require_relative '../apps/api_v1/application'
+require_relative '../apps/api_auth/application'
 
 Hanami.configure do
   middleware.use Hanami::Middleware::BodyParser, :json
 
+  mount ApiAuth::Application, at: '/api/auth'
   mount ApiV1::Application, at: '/api/v1'
 
   model do

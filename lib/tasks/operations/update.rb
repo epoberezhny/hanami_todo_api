@@ -4,12 +4,16 @@ module Tasks
       include ::Import[
         project_repo: 'repositories.project',
         task_repo: 'repositories.task',
-        contract: 'tasks.contracts.update'
+        contract: 'tasks.contracts.update',
+        project_policy: 'projects.policy'
       ]
 
-      def call(params:, **)
+      def call(params:, user_id:, **)
         project = yield find_entity(params, project_repo, :project_id)
-        task = yield find_entity(params, task_repo, :id)
+        task = yield find_entity(params, task_repo, %i[project_id id], :find_by_project_id)
+
+        yield project_policy.update?(project, user_id)
+
         attrs = yield validate(params, contract, task_repo: task_repo, project_id: params[:project_id])
         task_repo.transaction do
           update_task(project, task, attrs)

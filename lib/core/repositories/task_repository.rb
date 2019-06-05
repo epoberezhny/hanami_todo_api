@@ -3,6 +3,10 @@ class TaskRepository < Hanami::Repository
     tasks.where(project_id: project_id)
   end
 
+  def find_by_project_id(project_id, id)
+    by_project_id(project_id).where(id: id).limit(1).one
+  end
+
   def last_position_by_project_id(project_id)
     by_project_id(project_id).order { position.desc }.limit(1).select(:position).pluck(:position).first.to_i
   end
