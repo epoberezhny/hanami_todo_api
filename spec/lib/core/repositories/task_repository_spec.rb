@@ -14,6 +14,12 @@ RSpec.describe TaskRepository, type: :repo do
     end
   end
 
+  describe 'find_by_project_id' do
+    it 'finds task by project_id and id' do
+      expect(repo.find_by_project_id(project_1.id, task_1_1.id)).to eq(task_1_1)
+    end
+  end
+
   describe 'count_by_project_id' do
     it 'returns count of tasks by project id' do
       expect(repo.count_by_project_id(project_1.id)).to eq(2)

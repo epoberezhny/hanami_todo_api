@@ -30,6 +30,15 @@ RSpec.describe 'Tasks', type: :request do
         end
       end
 
+      context '403' do
+        let(:another_user) { Fabricate.create(:user, password_hash: 'hash') }
+        let(:project) { Fabricate.create(:project, user_id: another_user.id) }
+
+        example_request 'Forbidden' do
+          expect(status).to eq(403)
+        end
+      end
+
       context '404' do
         let(:project_id) { 0 }
 
@@ -53,9 +62,9 @@ RSpec.describe 'Tasks', type: :request do
 
       before { Fabricate.times(2, :task, project_id: project.id) }
 
-      context '200' do
-        let(:project_id) { project.id }
+      let(:project_id) { project.id }
 
+      context '200' do
         example_request 'Success' do
           expect(status).to eq(200)
           expect(response_body).to match_json_schema('api/v1/tasks')
@@ -67,6 +76,15 @@ RSpec.describe 'Tasks', type: :request do
 
         example_request 'Unauthorized' do
           expect(status).to eq(401)
+        end
+      end
+
+      context '403' do
+        let(:another_user) { Fabricate.create(:user, password_hash: 'hash') }
+        let(:project) { Fabricate.create(:project, user_id: another_user.id) }
+
+        example_request 'Forbidden' do
+          expect(status).to eq(403)
         end
       end
 
@@ -84,10 +102,9 @@ RSpec.describe 'Tasks', type: :request do
       let(:task) { Fabricate.create(:task, project_id: project.id) }
 
       let(:project_id) { project.id }
+      let(:id) { task.id }
 
       context '200' do
-        let(:id) { task.id }
-
         example_request 'Success' do
           expect(status).to eq(200)
           expect(response_body).to match_json_schema('api/v1/task')
@@ -99,6 +116,15 @@ RSpec.describe 'Tasks', type: :request do
 
         example_request 'Unauthorized' do
           expect(status).to eq(401)
+        end
+      end
+
+      context '403' do
+        let(:another_user) { Fabricate.create(:user, password_hash: 'hash') }
+        let(:project) { Fabricate.create(:project, user_id: another_user.id) }
+
+        example_request 'Forbidden' do
+          expect(status).to eq(403)
         end
       end
 
@@ -140,6 +166,15 @@ RSpec.describe 'Tasks', type: :request do
         end
       end
 
+      context '403' do
+        let(:another_user) { Fabricate.create(:user, password_hash: 'hash') }
+        let(:project) { Fabricate.create(:project, user_id: another_user.id) }
+
+        example_request 'Forbidden' do
+          expect(status).to eq(403)
+        end
+      end
+
       context '404' do
         let(:id) { 0 }
 
@@ -163,10 +198,9 @@ RSpec.describe 'Tasks', type: :request do
       let(:task) { Fabricate.create(:task, project_id: project.id) }
 
       let(:project_id) { project.id }
+      let(:id) { task.id }
 
       context '204' do
-        let(:id) { task.id }
-
         example_request 'No content' do
           expect(status).to eq(204)
         end
@@ -177,6 +211,15 @@ RSpec.describe 'Tasks', type: :request do
 
         example_request 'Unauthorized' do
           expect(status).to eq(401)
+        end
+      end
+
+      context '403' do
+        let(:another_user) { Fabricate.create(:user, password_hash: 'hash') }
+        let(:project) { Fabricate.create(:project, user_id: another_user.id) }
+
+        example_request 'Forbidden' do
+          expect(status).to eq(403)
         end
       end
 

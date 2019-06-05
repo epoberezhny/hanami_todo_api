@@ -6,9 +6,6 @@ require_relative '../lib/core/libs/contract'
 
 Dry::System::Hanami::Resolver::CORE_FOLDER = 'core/'.freeze
 
-# General container class for project dependencies
-#
-# {http://dry-rb.org/gems/dry-system/ Dry-system documentation}
 class Container < Dry::System::Container
   extend Dry::System::Hanami::Resolver
 
@@ -26,7 +23,7 @@ class Container < Dry::System::Container
     register_folder! "#{domain}/operations"
   end
 
-  %w[projects tasks].each do |domain|
+  %w[projects].each do |domain|
     register_file! "#{domain}/policy"
   end
 
