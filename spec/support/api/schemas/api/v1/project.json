@@ -1,5 +1,5 @@
 {
-  "id": "file:/project.json",
+  "id": "file:/api/v1/project.json",
   "definitions": {
     "project": {
       "type": "object",
@@ -11,7 +11,8 @@
           "type": "string"
         },
         "created_at": {
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         }
       },
       "required": [
@@ -28,5 +29,8 @@
       "type": "object",
       "$ref": "#/definitions/project"
     }
-  }
+  },
+  "required": [
+    "data"
+  ]
 }

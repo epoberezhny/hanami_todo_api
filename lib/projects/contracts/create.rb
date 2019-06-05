@@ -6,6 +6,7 @@ module Projects
         min_size?: ::Projects::Constants::Title::MIN_SIZE,
         max_size?: ::Projects::Constants::Title::MAX_SIZE
       )
+      required(:user_id).filled(:int?)
     end
   end
 end

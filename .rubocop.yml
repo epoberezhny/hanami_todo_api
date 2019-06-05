@@ -40,3 +40,9 @@ RSpec/EmptyExampleGroup:
 RSpec/ContextWording:
   Exclude:
     - spec/**/requests/**/*
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/ExampleLength:
+  Max: 10

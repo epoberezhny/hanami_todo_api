@@ -3,6 +3,8 @@ RSpec.describe 'Projects', type: :request do
     header 'Accept', 'application/json'
     header 'Content-Type', 'application/json'
 
+    authentication :apiKey, :access_token, name: 'Authorization'
+
     post '/api/v1/projects' do
       parameter :title, 'Title of a project', in: :body, required: true
 
@@ -17,6 +19,14 @@ RSpec.describe 'Projects', type: :request do
         end
       end
 
+      context '401' do
+        let(:access_token) { nil }
+
+        example_request 'Unauthorized' do
+          expect(status).to eq(401)
+        end
+      end
+
       context '422' do
         example_request 'Unprocessable' do
           expect(status).to eq(422)
@@ -26,7 +36,7 @@ RSpec.describe 'Projects', type: :request do
     end
 
     get '/api/v1/projects' do
-      before { Fabricate.times(2, :project) }
+      before { Fabricate.times(2, :project, user_id: user.id) }
 
       context '200' do
         example_request 'Success' do
@@ -34,10 +44,18 @@ RSpec.describe 'Projects', type: :request do
           expect(response_body).to match_json_schema('api/v1/projects')
         end
       end
+
+      context '401' do
+        let(:access_token) { nil }
+
+        example_request 'Unauthorized' do
+          expect(status).to eq(401)
+        end
+      end
     end
 
     get '/api/v1/projects/:id' do
-      let(:project) { Fabricate.create(:project) }
+      let(:project) { Fabricate.create(:project, user_id: user.id) }
 
       context '200' do
         let(:id) { project.id }
@@ -45,6 +63,14 @@ RSpec.describe 'Projects', type: :request do
         example_request 'Success' do
           expect(status).to eq(200)
           expect(response_body).to match_json_schema('api/v1/project')
+        end
+      end
+
+      context '401' do
+        let(:access_token) { nil }
+
+        example_request 'Unauthorized' do
+          expect(status).to eq(401)
         end
       end
 
@@ -60,7 +86,7 @@ RSpec.describe 'Projects', type: :request do
     patch '/api/v1/projects/:id' do
       parameter :title, 'Title of the project', in: :body
 
-      let(:project) { Fabricate.create(:project) }
+      let(:project) { Fabricate.create(:project, user_id: user.id) }
       let(:project_attrs) { Fabricate.attributes_for(:project) }
 
       let(:id) { project.id }
@@ -70,6 +96,14 @@ RSpec.describe 'Projects', type: :request do
         example_request 'Success' do
           expect(status).to eq(200)
           expect(response_body).to match_json_schema('api/v1/project')
+        end
+      end
+
+      context '401' do
+        let(:access_token) { nil }
+
+        example_request 'Unauthorized' do
+          expect(status).to eq(401)
         end
       end
 
@@ -92,13 +126,21 @@ RSpec.describe 'Projects', type: :request do
     end
 
     delete '/api/v1/projects/:id' do
-      let(:project) { Fabricate.create(:project) }
+      let(:project) { Fabricate.create(:project, user_id: user.id) }
 
       context '204' do
         let(:id) { project.id }
 
         example_request 'No content' do
           expect(status).to eq(204)
+        end
+      end
+
+      context '401' do
+        let(:access_token) { nil }
+
+        example_request 'Unauthorized' do
+          expect(status).to eq(401)
         end
       end
 

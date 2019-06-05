@@ -1,8 +1,8 @@
 RSpec.describe TaskRepository, type: :repo do
   subject(:repo) { described_class.new }
 
-  let(:project_1) { Fabricate.create(:project) }
-  let(:project_2) { Fabricate.create(:project) }
+  let(:project_1) { Fabricate.create(:project, user_id: user.id) }
+  let(:project_2) { Fabricate.create(:project, user_id: user.id) }
 
   let!(:task_1_1) { Fabricate.create(:task, project_id: project_1.id) }
   let!(:task_1_2) { Fabricate.create(:task, project_id: project_1.id) }
