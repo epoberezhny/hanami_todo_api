@@ -1,6 +1,7 @@
 require 'dry/system/container'
 require 'dry/system/hanami'
 
+require_relative 'before_boot/shrine'
 require_relative '../lib/core/libs/operation'
 require_relative '../lib/core/libs/contract'
 
@@ -10,8 +11,6 @@ class Container < Dry::System::Container
   extend Dry::System::Hanami::Resolver
 
   ITSELF_RESOLVER = :itself.to_proc.freeze
-
-  use :env
 
   register_folder! 'core/repositories'
 
@@ -25,9 +24,5 @@ class Container < Dry::System::Container
 
   %w[projects].each do |domain|
     register_file! "#{domain}/policy"
-  end
-
-  configure do |config|
-    config.env = Hanami.env
   end
 end
