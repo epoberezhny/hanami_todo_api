@@ -22,7 +22,7 @@ class Container < Dry::System::Container
     register_folder! "#{domain}/operations"
   end
 
-  %w[projects].each do |domain|
+  %w[projects tasks comments].each do |domain|
     register_file! "#{domain}/policy"
   end
 end

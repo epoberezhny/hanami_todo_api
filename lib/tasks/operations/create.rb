@@ -5,12 +5,12 @@ module Tasks
         project_repo: 'repositories.project',
         task_repo: 'repositories.task',
         contract: 'tasks.contracts.create',
-        project_policy: 'projects.policy'
+        task_policy: 'tasks.policy'
       ]
 
       def call(params:, user_id:, **)
         project = yield find_entity(params, project_repo, :project_id)
-        yield project_policy.update?(project, user_id)
+        yield task_policy.create?(project, user_id)
         attrs = yield validate(params, contract)
         set_missing_attrs(attrs, project)
 
