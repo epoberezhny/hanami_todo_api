@@ -91,3 +91,5 @@ en:
     valid_position?: must be less than tasks count
 
     unique_username?: must be unique
+
+    at_least_one: at least one field must be filled

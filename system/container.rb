@@ -4,6 +4,7 @@ require 'dry/system/hanami'
 require_relative 'before_boot/shrine'
 require_relative '../lib/core/libs/operation'
 require_relative '../lib/core/libs/contract'
+require_relative '../lib/core/libs/policy'
 
 Dry::System::Hanami::Resolver::CORE_FOLDER = 'core/'.freeze
 
@@ -14,11 +15,11 @@ class Container < Dry::System::Container
 
   register_folder! 'core/repositories'
 
-  %w[projects tasks auth/registration].each do |domain|
+  %w[projects tasks comments auth/registration].each do |domain|
     register_folder! "#{domain}/contracts", resolver: ITSELF_RESOLVER
   end
 
-  %w[projects tasks auth/registration auth/session auth/refresh].each do |domain|
+  %w[projects tasks comments auth/registration auth/session auth/refresh].each do |domain|
     register_folder! "#{domain}/operations"
   end
 
