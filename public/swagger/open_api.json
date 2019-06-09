@@ -15,7 +15,7 @@
     },
     "version": "1.0.0"
   },
-  "host": "localhost:2300",
+  "host": "",
   "schemes": [
     "http",
     "https"
@@ -61,9 +61,9 @@
             "examples": {
               "application/json": {
                 "data": {
-                  "csrf": "BQ+mbLve0Cu8hIrU79quSb0F0nPUYsY+anAzdqhCj3ci1yxacipXqCZ30H0wY8K/Y5R5wOLX7+MKnnTnex/+1A==",
-                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTk5NDQ2ODYsInVzZXJfaWQiOjEsInVpZCI6IjhjM2Q0Y2RiLTA5NzMtNGIxMy1hNzkwLWQ2MjBjYzI5OWM5ZCIsImV4cCI6MTU1OTk0NDY4Nn0.8Nwu4PT67c9rgx0oNPNwv7iwlt2noWHQfjlK34vpJ5k",
-                  "access_expires_at": "2019-06-08T00:58:06.000+03:00"
+                  "csrf": "a9vGYpq2+sWytSE5cVxNH4KqUlh9cNBwOY3KxCY5L82VVWgHOrQdLfyLmZ65kKJPA+0GBBckj7JgYL8zuZBCpQ==",
+                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjAxMjY5MzUsInVzZXJfaWQiOjEsInVpZCI6ImNmZTk3MWQ3LTRiNGQtNDA3NC05OTc4LWM4MDIyNDY4ZTE1OCIsImV4cCI6MTU2MDEyNjkzNX0.IJYcTFWa3R-Otgh2anzSXwgM7eWZLnJxhAZYXuo-w_Y",
+                  "access_expires_at": "2019-06-10T03:35:35.000+03:00"
                 }
               }
             }
@@ -139,14 +139,14 @@
                 "data": {
                   "id": 2,
                   "username": "username_1",
-                  "created_at": "2019-06-07T20:58:06.749Z"
+                  "created_at": "2019-06-09T23:35:35.673Z"
                 },
                 "meta": {
-                  "csrf": "RUm9x79aMKku4FSlvtKiqZyLcP6/Psx9yuaNty/1wV1GJ5GbU7C8qXaKUZpoc241ajdWdcQMBC7ivUynZEHx1w==",
-                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTk5NDQ2ODYsInVzZXJfaWQiOjIsInVpZCI6ImUzMmMxMzRiLWYxNWUtNDAzMy1hNTQ0LTMzMmE3ZGZkZWI4OSIsImV4cCI6MTU1OTk0NDY4Nn0.da4J1bbV9n9niyLe59ukrTKpRQ_1AaMMnwi6BHbXghw",
-                  "access_expires_at": "2019-06-08T00:58:06.000+03:00",
-                  "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTk5NDQ2ODYsInVzZXJfaWQiOjIsInVpZCI6IjMxZWRkZDIxLTNjNmQtNGI3Ni1hMDU3LTUwMDlkOTEyMjk1ZiIsImV4cCI6MTU2MDU0NTg4Nn0.6aooMX3MgJne-pQ2VDGBQcZEZroQU7lGbjd2KdzHpfc",
-                  "refresh_expires_at": "2019-06-14T23:58:06.000+03:00"
+                  "csrf": "LPk7u8798Vj2BjDDytPKG4bHXu/oeXF5F+0GSJ/9k1PuIzUbduUA/hqUlr3XGMHm6o0md7LQbkWnTvpWU4nOfg==",
+                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjAxMjY5MzUsInVzZXJfaWQiOjIsInVpZCI6IjVkZWI1OWFiLTM1YmUtNDRhMy1hYWExLWEwNWRkYWY2NTlhZiIsImV4cCI6MTU2MDEyNjkzNX0.-9yIE2tc_MpC9PIxvxIJ1Wd2atdgEERd3YtAYZTVXpo",
+                  "access_expires_at": "2019-06-10T03:35:35.000+03:00",
+                  "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjAxMjY5MzUsInVzZXJfaWQiOjIsInVpZCI6IjQzOTFhMGYzLWQ0MmQtNDQ4NC04MTQ3LTVmYjZmZTM2MmU2OCIsImV4cCI6MTU2MDcyODEzNX0.VdRbtyev19xSQq9bNkt7Y4fJ2-MY_keyHJVwL2Eamrs",
+                  "refresh_expires_at": "2019-06-17T02:35:35.000+03:00"
                 }
               }
             }
@@ -205,7 +205,7 @@
                 "data": {
                   "id": 4,
                   "username": "username_3",
-                  "created_at": "2019-06-07T20:58:07.565Z"
+                  "created_at": "2019-06-09T23:35:36.481Z"
                 }
               }
             }
@@ -279,14 +279,14 @@
                 "data": {
                   "id": 3,
                   "username": "username_2",
-                  "created_at": "2019-06-07T20:58:07.056Z"
+                  "created_at": "2019-06-09T23:35:35.968Z"
                 },
                 "meta": {
-                  "csrf": "BHgCAf1pow/QJWxkZeqrceHUx4r2SnbHwFW6rGYXF2+5bmuzMXlXmbqtMrOHIjEcyWLIqEwNF+lKyY0uQoFXNA==",
-                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTk5NDQ2ODcsInVzZXJfaWQiOjMsInVpZCI6IjgwMzJmYTEzLWUyYmQtNDdlZi04NDRjLWRiNzYzNTJjZTYwNiIsImV4cCI6MTU1OTk0NDY4N30.NnZMyNrN9cZx6vOObkSkON9vGNpj08kcFaEVjFACvao",
-                  "access_expires_at": "2019-06-08T00:58:07.000+03:00",
-                  "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTk5NDQ2ODcsInVzZXJfaWQiOjMsInVpZCI6ImMxMzhlYWVlLWQ0MGUtNDYzMy05MDQ1LTM0MDNlMDIwZGQzNiIsImV4cCI6MTU2MDU0NTg4N30.Y-zZM3h4WW7-oTYngdRBdy30eBYD587SrzEp_9S7LzU",
-                  "refresh_expires_at": "2019-06-14T23:58:07.000+03:00"
+                  "csrf": "AeymYabnGqnJDo8qWRALRB2VBuLkJFALVKxWzjENLKanLOyaTnD39ZzLSy/NY7CYK3nnvIYPMX9z5t3/saWP1g==",
+                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjAxMjY5MzYsInVzZXJfaWQiOjMsInVpZCI6ImMxZjhlMzUwLTg3NWYtNDhhNi1hNGNmLThhZDI0ZTkzZjRlYSIsImV4cCI6MTU2MDEyNjkzNn0.yfwx496g60xlLnkC5BhTAtI0pcxPP5DrlBVsweSw6OU",
+                  "access_expires_at": "2019-06-10T03:35:36.000+03:00",
+                  "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjAxMjY5MzYsInVzZXJfaWQiOjMsInVpZCI6IjdkN2Y3ZmRkLTNkOTgtNDdlYy05YjAxLWQ2Yjg3YjE3YWU0YyIsImV4cCI6MTU2MDcyODEzNn0.NoKOtIhWFOmbvP2DQtFIHHnLkOrBTao1xWh44Ty4tZ4",
+                  "refresh_expires_at": "2019-06-17T02:35:36.000+03:00"
                 }
               }
             }
@@ -349,6 +349,54 @@
         "security": []
       }
     },
+    "/api/v1/attachments/upload": {
+      "post": {
+        "tags": [
+          "Attachments"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "File for attachment",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "id": "7f5d01004f1145c65ac50bfd7688aa62.jpg",
+                "storage": "cache",
+                "metadata": {
+                  "filename": "test.jpg",
+                  "size": 6793,
+                  "mime_type": "image/jpeg"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
     "/api/v1/projects/{project_id}/tasks/{task_id}/comments": {
       "get": {
         "tags": [
@@ -393,14 +441,14 @@
                   {
                     "id": 2,
                     "text": "Comment Text 4",
-                    "attachment": null,
-                    "created_at": "2019-06-07T20:58:09.462Z"
+                    "attachment_url": null,
+                    "created_at": "2019-06-09T23:35:38.434Z"
                   },
                   {
                     "id": 3,
                     "text": "Comment Text 5",
-                    "attachment": null,
-                    "created_at": "2019-06-07T20:58:09.466Z"
+                    "attachment_url": null,
+                    "created_at": "2019-06-09T23:35:38.437Z"
                   }
                 ]
               }
@@ -471,8 +519,20 @@
                   "description": "Text of a comment"
                 },
                 "attachment": {
-                  "type": "string",
-                  "description": "Attachment of a comment"
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Id of the attachment"
+                    },
+                    "storage": {
+                      "type": "string",
+                      "description": "Storage of the attachment",
+                      "enum": [
+                        "cache"
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -512,8 +572,8 @@
                 "data": {
                   "id": 1,
                   "text": "Comment Text 0",
-                  "attachment": null,
-                  "created_at": "2019-06-07T20:58:08.138Z"
+                  "attachment_url": null,
+                  "created_at": "2019-06-09T23:35:37.114Z"
                 }
               }
             }
@@ -625,8 +685,8 @@
                 "data": {
                   "id": 10,
                   "text": "Comment Text 12",
-                  "attachment": null,
-                  "created_at": "2019-06-07T20:58:10.560Z"
+                  "attachment_url": null,
+                  "created_at": "2019-06-09T23:35:39.522Z"
                 }
               }
             }
@@ -777,8 +837,20 @@
                   "description": "Text of a comment"
                 },
                 "attachment": {
-                  "type": "string",
-                  "description": "Attachment of a comment"
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "Id of the attachment"
+                    },
+                    "storage": {
+                      "type": "string",
+                      "description": "Storage of the attachment",
+                      "enum": [
+                        "cache"
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -819,8 +891,8 @@
                 "data": {
                   "id": 13,
                   "text": "drugoi text",
-                  "attachment": null,
-                  "created_at": "2019-06-07T20:58:11.642Z"
+                  "attachment_url": null,
+                  "created_at": "2019-06-09T23:35:40.600Z"
                 }
               }
             }
@@ -911,12 +983,12 @@
                   {
                     "id": 24,
                     "title": "Project Title 23",
-                    "created_at": "2019-06-07T20:58:14.648Z"
+                    "created_at": "2019-06-09T23:35:43.549Z"
                   },
                   {
                     "id": 25,
                     "title": "Project Title 24",
-                    "created_at": "2019-06-07T20:58:14.651Z"
+                    "created_at": "2019-06-09T23:35:43.552Z"
                   }
                 ]
               }
@@ -993,7 +1065,7 @@
                 "data": {
                   "id": 23,
                   "title": "Project Title 22",
-                  "created_at": "2019-06-07T20:58:14.111Z"
+                  "created_at": "2019-06-09T23:35:43.007Z"
                 }
               }
             }
@@ -1071,7 +1143,7 @@
                 "data": {
                   "id": 28,
                   "title": "Project Title 27",
-                  "created_at": "2019-06-07T20:58:15.188Z"
+                  "created_at": "2019-06-09T23:35:44.078Z"
                 }
               }
             }
@@ -1232,7 +1304,7 @@
                 "data": {
                   "id": 31,
                   "title": "Project Title 31",
-                  "created_at": "2019-06-07T20:58:16.237Z"
+                  "created_at": "2019-06-09T23:35:45.096Z"
                 }
               }
             }
@@ -1334,7 +1406,7 @@
                     "done": false,
                     "position": 26,
                     "deadline": null,
-                    "created_at": "2019-06-07T20:58:19.907Z"
+                    "created_at": "2019-06-09T23:35:48.719Z"
                   },
                   {
                     "id": 25,
@@ -1342,7 +1414,7 @@
                     "done": false,
                     "position": 27,
                     "deadline": null,
-                    "created_at": "2019-06-07T20:58:19.910Z"
+                    "created_at": "2019-06-09T23:35:48.722Z"
                   }
                 ]
               }
@@ -1453,7 +1525,7 @@
                   "done": false,
                   "position": 1,
                   "deadline": null,
-                  "created_at": "2019-06-07T20:58:18.579Z"
+                  "created_at": "2019-06-09T23:35:47.432Z"
                 }
               }
             }
@@ -1561,7 +1633,7 @@
                   "done": false,
                   "position": 34,
                   "deadline": null,
-                  "created_at": "2019-06-07T20:58:20.983Z"
+                  "created_at": "2019-06-09T23:35:49.779Z"
                 }
               }
             }
@@ -1751,7 +1823,7 @@
                   "done": false,
                   "position": 1,
                   "deadline": null,
-                  "created_at": "2019-06-07T20:58:22.036Z"
+                  "created_at": "2019-06-09T23:35:50.815Z"
                 }
               }
             }
@@ -1836,6 +1908,10 @@
     },
     {
       "name": "Session",
+      "description": ""
+    },
+    {
+      "name": "Attachments",
       "description": ""
     },
     {

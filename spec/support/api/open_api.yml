@@ -5,7 +5,7 @@ info:
   contact: {}
   license: {}
   version: 1.0.0
-host: 'localhost:2300'
+host: ''
 schemes:
   - http
   - https

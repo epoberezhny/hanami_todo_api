@@ -7,7 +7,8 @@ RSpec.describe 'Comments', type: :request do
 
     post '/api/v1/projects/:project_id/tasks/:task_id/comments' do
       parameter :text, 'Text of a comment', in: :body
-      parameter :attachment, 'Attachment of a comment', in: :body
+      parameter :id, 'Id of the attachment', in: :body, scope: :attachment
+      parameter :storage, 'Storage of the attachment', in: :body, scope: :attachment, enum: ['cache']
 
       let(:project) { Fabricate.create(:project, user_id: user.id) }
       let(:task) { Fabricate.create(:task, project_id: project.id) }
@@ -19,7 +20,7 @@ RSpec.describe 'Comments', type: :request do
 
       context '201' do
         example_request 'Created' do
-          # expect(status).to eq(201)
+          expect(status).to eq(201)
           expect(response_body).to match_json_schema('api/v1/comment')
         end
       end
@@ -145,7 +146,8 @@ RSpec.describe 'Comments', type: :request do
 
     patch '/api/v1/projects/:project_id/tasks/:task_id/comments/:id' do
       parameter :text, 'Text of a comment', in: :body
-      parameter :attachment, 'Attachment of a comment', in: :body
+      parameter :id, 'Id of the attachment', in: :body, scope: :attachment
+      parameter :storage, 'Storage of the attachment', in: :body, scope: :attachment, enum: ['cache']
 
       let(:project) { Fabricate.create(:project, user_id: user.id) }
       let(:task) { Fabricate.create(:task, project_id: project.id) }

@@ -10,6 +10,15 @@ GIT
   specs:
     dry-system-hanami (0.1.0)
 
+GIT
+  remote: git://github.com/katafrakt/hanami-shrine.git
+  revision: de69815c6a609e87bb524c0a865cd46585bc30cb
+  specs:
+    hanami-shrine (0.4.0)
+      hanami-model (>= 1.0)
+      hanami-utils (>= 1.0)
+      shrine (>= 2.16.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -36,7 +45,7 @@ GEM
     dry-configurable (0.8.3)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.4, >= 0.4.7)
-    dry-container (0.7.0)
+    dry-container (0.7.1)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1, >= 0.1.3)
     dry-core (0.4.7)
@@ -86,6 +95,7 @@ GEM
     dry-validation-matchers (1.1.1)
       dry-validation
     fabrication (2.20.2)
+    ffi (1.11.1)
     fuubar (2.4.0)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
@@ -132,10 +142,6 @@ GEM
       hanami-utils (~> 1.3)
       http_router (= 0.11.2)
       rack (~> 2.0)
-    hanami-shrine (0.4.0)
-      hanami-model (>= 1.0)
-      hanami-utils (>= 1.0)
-      shrine (>= 2.7.0)
     hanami-utils (1.3.1)
       concurrent-ruby (~> 1.0)
       transproc (~> 1.0)
@@ -152,6 +158,9 @@ GEM
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
+    image_processing (1.9.0)
+      mini_magick (>= 4.9.3, < 5)
+      ruby-vips (>= 2.0.13, < 3)
     inflecto (0.0.2)
     jaro_winkler (1.5.2)
     json_matchers (0.11.0)
@@ -162,6 +171,7 @@ GEM
       jwt (>= 2.1.1, < 3)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mini_magick (4.9.3)
     mini_mime (1.0.1)
     minitest (5.11.3)
     msgpack (1.2.10)
@@ -233,9 +243,9 @@ GEM
     rubocop-rspec (1.33.0)
       rubocop (>= 0.60.0)
     ruby-progressbar (1.10.1)
+    ruby-vips (2.0.13)
+      ffi (~> 1.9)
     sequel (4.49.0)
-    shotgun (0.9.2)
-      rack (>= 1.0)
     shrine (2.17.1)
       content_disposition (~> 1.0)
       down (~> 4.1)
@@ -268,8 +278,9 @@ DEPENDENCIES
   hanami (~> 1.3)
   hanami-fabrication
   hanami-model (~> 1.3)
-  hanami-shrine
+  hanami-shrine!
   i18n
+  image_processing
   json_matchers
   jwt_sessions
   multi_json
@@ -285,7 +296,6 @@ DEPENDENCIES
   rubocop
   rubocop-performance
   rubocop-rspec
-  shotgun
   tiny_serializer
 
 RUBY VERSION
