@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "file:/api/v1/comment.json#/definitions/comment"
+      }
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

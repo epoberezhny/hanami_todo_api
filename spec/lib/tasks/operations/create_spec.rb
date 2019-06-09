@@ -2,11 +2,11 @@ RSpec.describe Tasks::Operations::Create, type: :operation do
   subject(:result) { operation.call(params: task_attrs, user_id: 0) }
 
   let(:operation) do
-    described_class.new(project_repo: project_repo, task_repo: task_repo, project_policy: project_policy)
+    described_class.new(project_repo: project_repo, task_repo: task_repo, task_policy: task_policy)
   end
   let(:project_repo) { instance_double('ProjectRepository', find: project) }
   let(:task_repo) { instance_double('TaskRepository', create: task, last_position_by_project_id: 1) }
-  let(:project_policy) { instance_double('Projects::Policy', update?: policy_result) }
+  let(:task_policy) { instance_double('Tasks::Policy', create?: policy_result) }
 
   let(:task_attrs) { Fabricate.attributes_for(:task) }
   let(:project) { Fabricate.build(:project) }

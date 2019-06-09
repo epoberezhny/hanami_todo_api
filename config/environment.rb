@@ -7,6 +7,7 @@ require 'dry/validation/messages/i18n'
 require_relative '../system/import'
 require_relative '../apps/api_v1/application'
 require_relative '../apps/api_auth/application'
+require_relative '../lib/core/uploaders/attachment_uploader'
 
 Hanami.configure do
   middleware.use Hanami::Middleware::BodyParser, :json

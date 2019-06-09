@@ -35,10 +35,16 @@ gem 'i18n'
 gem 'bcrypt'
 gem 'jwt_sessions'
 
+# attachments
+gem 'hanami-shrine', github: 'katafrakt/hanami-shrine'
+gem 'image_processing'
+
+gem 'bootsnap'
+
 group :development do
   # Code reloading
   # See: http://hanamirb.org/guides/projects/code-reloading
-  gem 'shotgun', platforms: :ruby
+  # gem 'shotgun', platforms: :ruby
 end
 
 group :test, :development do

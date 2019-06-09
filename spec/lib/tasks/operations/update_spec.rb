@@ -2,7 +2,7 @@ RSpec.describe Tasks::Operations::Update, type: :operation do
   subject(:result) { operation.call(params: task_attrs, user_id: 0) }
 
   let(:operation) do
-    described_class.new(project_repo: project_repo, task_repo: task_repo, project_policy: project_policy)
+    described_class.new(project_repo: project_repo, task_repo: task_repo, task_policy: task_policy)
   end
   let(:project_repo) { instance_double('ProjectRepository', find: project) }
   let(:task_repo) do
@@ -15,7 +15,7 @@ RSpec.describe Tasks::Operations::Update, type: :operation do
       shift_right_from_by_project_id: 2
     )
   end
-  let(:project_policy) { instance_double('Projects::Policy', update?: policy_result) }
+  let(:task_policy) { instance_double('Task::Policy', update?: policy_result) }
 
   let(:project) { Fabricate.build(:project) }
   let(:task) { Fabricate.build(:task) }

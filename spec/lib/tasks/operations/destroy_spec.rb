@@ -2,13 +2,13 @@ RSpec.describe Tasks::Operations::Destroy, type: :operation do
   subject(:result) { operation.call(params: {}, user_id: 0) }
 
   let(:operation) do
-    described_class.new(project_repo: project_repo, task_repo: task_repo, project_policy: project_policy)
+    described_class.new(project_repo: project_repo, task_repo: task_repo, task_policy: task_policy)
   end
   let(:project_repo) { instance_double('ProjectRepository', find: project) }
   let(:task_repo) do
     instance_double('TaskRepository', find_by_project_id: task, delete: task, shift_left_from_by_project_id: 1)
   end
-  let(:project_policy) { instance_double('Projects::Policy', update?: policy_result) }
+  let(:task_policy) { instance_double('Tasks::Policy', destroy?: policy_result) }
 
   let(:project) { Fabricate.build(:project) }
   let(:task) { Fabricate.build(:task) }

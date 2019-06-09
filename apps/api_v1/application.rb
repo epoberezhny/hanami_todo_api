@@ -2,6 +2,7 @@ require 'hanami/helpers'
 require 'hanami/assets'
 
 require_relative '../../helpers/authentication'
+require_relative 'controllers/handler'
 
 module ApiV1
   class Application < Hanami::Application

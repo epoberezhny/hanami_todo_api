@@ -2,9 +2,13 @@ require:
   - rubocop-performance
   - rubocop-rspec
 
+# Lint ------------------------------------------------------------------------
+
 Lint/HandleExceptions:
   Exclude:
     - Rakefile
+
+# Metrics ---------------------------------------------------------------------
 
 Metrics/BlockLength:
   Exclude:
@@ -13,6 +17,8 @@ Metrics/BlockLength:
 
 Metrics/LineLength:
   Max: 120
+
+# Style -----------------------------------------------------------------------
 
 Style/BlockComments:
   Exclude:
@@ -27,8 +33,15 @@ Style/Documentation:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+# Layout ----------------------------------------------------------------------
+
 Layout/ClassStructure:
   Enabled: true
+
+Layout/IndentFirstArrayElement:
+  EnforcedStyle: consistent
+
+# RSpec -----------------------------------------------------------------------
 
 RSpec/MultipleExpectations:
   Enabled: false
