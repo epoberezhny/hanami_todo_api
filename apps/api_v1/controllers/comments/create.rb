@@ -11,7 +11,7 @@ module ApiV1::Controllers::Comments
 
     private
 
-    def handler
+    def handler # rubocop:disable Metrics/MethodLength
       lambda do |m|
         m.success do |project, resource|
           status 201, { data: serializer_class.new(resource) }.to_json
