@@ -4,7 +4,7 @@ class AttachmentUploader < Shrine
 
   process(:store) do |io|
     io.download do |original|
-      ImageProcessing::Vips.source(original).resize_to_limit!(500, 500)
+      ImageProcessing::MiniMagick.source(original).resize_to_limit!(500, 500)
     end
   end
 end
