@@ -2,12 +2,17 @@ require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'
 require 'hanami/middleware/body_parser'
-require_relative '../lib/hanami_todo_api'
+require 'dry/validation/messages/i18n'
+
+require_relative '../system/import'
 require_relative '../apps/api_v1/application'
+require_relative '../apps/api_auth/application'
+require_relative '../lib/core/uploaders/attachment_uploader'
 
 Hanami.configure do
   middleware.use Hanami::Middleware::BodyParser, :json
 
+  mount ApiAuth::Application, at: '/api/auth'
   mount ApiV1::Application, at: '/api/v1'
 
   model do
@@ -30,12 +35,12 @@ Hanami.configure do
     schema     'db/schema.sql'
   end
 
-  mailer do
-    root 'lib/hanami_todo_api/mailers'
+  # mailer do
+  #   root 'lib/hanami_todo_api/mailers'
 
-    # See http://hanamirb.org/guides/mailers/delivery
-    delivery :test
-  end
+  #   # See http://hanamirb.org/guides/mailers/delivery
+  #   delivery :test
+  # end
 
   environment :development do
     # See: http://hanamirb.org/guides/projects/logging
@@ -45,8 +50,8 @@ Hanami.configure do
   environment :production do
     logger level: :info, formatter: :json, filter: []
 
-    mailer do
-      delivery :smtp, address: ENV.fetch('SMTP_HOST'), port: ENV.fetch('SMTP_PORT')
-    end
+    # mailer do
+    #   delivery :smtp, address: ENV.fetch('SMTP_HOST'), port: ENV.fetch('SMTP_PORT')
+    # end
   end
 end

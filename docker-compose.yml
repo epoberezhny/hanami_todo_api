@@ -1,8 +1,20 @@
-version: '3'
+version: '3.7'
+
+volumes:
+  postgres_data:
+  redis_data:
+
 services:
-  db:
-    image: postgres:10-alpine
+  postgres:
+    image: postgres:11-alpine
     ports:
       - 5432:5432
     volumes:
-      - ./tmp/db-data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:5-alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data

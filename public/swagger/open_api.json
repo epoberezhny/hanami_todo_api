@@ -1,0 +1,1930 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Todo list API",
+    "description": "",
+    "termsOfService": "http://open-api.io/terms/",
+    "contact": {
+      "name": "API Support",
+      "url": "http://www.open-api.io/support",
+      "email": "support@open-api.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "host": "",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/auth/refresh": {
+      "post": {
+        "tags": [
+          "Refresh"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "X_Refresh_Token",
+            "in": "header",
+            "description": " x refresh token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "csrf": "a9vGYpq2+sWytSE5cVxNH4KqUlh9cNBwOY3KxCY5L82VVWgHOrQdLfyLmZ65kKJPA+0GBBckj7JgYL8zuZBCpQ==",
+                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjAxMjY5MzUsInVzZXJfaWQiOjEsInVpZCI6ImNmZTk3MWQ3LTRiNGQtNDA3NC05OTc4LWM4MDIyNDY4ZTE1OCIsImV4cCI6MTU2MDEyNjkzNX0.IJYcTFWa3R-Otgh2anzSXwgM7eWZLnJxhAZYXuo-w_Y",
+                  "access_expires_at": "2019-06-10T03:35:35.000+03:00"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/api/auth/registration": {
+      "post": {
+        "tags": [
+          "Registration"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "required": [
+                "username"
+              ],
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "description": "Username"
+                },
+                "password": {
+                  "type": "string",
+                  "description": "Password"
+                },
+                "password_confirmation": {
+                  "type": "string",
+                  "description": "Password confirmation"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 2,
+                  "username": "username_1",
+                  "created_at": "2019-06-09T23:35:35.673Z"
+                },
+                "meta": {
+                  "csrf": "LPk7u8798Vj2BjDDytPKG4bHXu/oeXF5F+0GSJ/9k1PuIzUbduUA/hqUlr3XGMHm6o0md7LQbkWnTvpWU4nOfg==",
+                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjAxMjY5MzUsInVzZXJfaWQiOjIsInVpZCI6IjVkZWI1OWFiLTM1YmUtNDRhMy1hYWExLWEwNWRkYWY2NTlhZiIsImV4cCI6MTU2MDEyNjkzNX0.-9yIE2tc_MpC9PIxvxIJ1Wd2atdgEERd3YtAYZTVXpo",
+                  "access_expires_at": "2019-06-10T03:35:35.000+03:00",
+                  "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjAxMjY5MzUsInVzZXJfaWQiOjIsInVpZCI6IjQzOTFhMGYzLWQ0MmQtNDQ4NC04MTQ3LTVmYjZmZTM2MmU2OCIsImV4cCI6MTU2MDcyODEzNX0.VdRbtyev19xSQq9bNkt7Y4fJ2-MY_keyHJVwL2Eamrs",
+                  "refresh_expires_at": "2019-06-17T02:35:35.000+03:00"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "username": [
+                    "is missing"
+                  ],
+                  "password": [
+                    "is missing"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/api/auth/session": {
+      "get": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 4,
+                  "username": "username_3",
+                  "created_at": "2019-06-09T23:35:36.481Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "required": [
+                "username"
+              ],
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "description": "Username"
+                },
+                "password": {
+                  "type": "string",
+                  "description": "Password"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 3,
+                  "username": "username_2",
+                  "created_at": "2019-06-09T23:35:35.968Z"
+                },
+                "meta": {
+                  "csrf": "AeymYabnGqnJDo8qWRALRB2VBuLkJFALVKxWzjENLKanLOyaTnD39ZzLSy/NY7CYK3nnvIYPMX9z5t3/saWP1g==",
+                  "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjAxMjY5MzYsInVzZXJfaWQiOjMsInVpZCI6ImMxZjhlMzUwLTg3NWYtNDhhNi1hNGNmLThhZDI0ZTkzZjRlYSIsImV4cCI6MTU2MDEyNjkzNn0.yfwx496g60xlLnkC5BhTAtI0pcxPP5DrlBVsweSw6OU",
+                  "access_expires_at": "2019-06-10T03:35:36.000+03:00",
+                  "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjAxMjY5MzYsInVzZXJfaWQiOjMsInVpZCI6IjdkN2Y3ZmRkLTNkOTgtNDdlYy05YjAxLWQ2Yjg3YjE3YWU0YyIsImV4cCI6MTU2MDcyODEzNn0.NoKOtIhWFOmbvP2DQtFIHHnLkOrBTao1xWh44Ty4tZ4",
+                  "refresh_expires_at": "2019-06-17T02:35:36.000+03:00"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "delete": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "X_Refresh_Token",
+            "in": "header",
+            "description": " x refresh token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/api/v1/attachments/upload": {
+      "post": {
+        "tags": [
+          "Attachments"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "File for attachment",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "id": "7f5d01004f1145c65ac50bfd7688aa62.jpg",
+                "storage": "cache",
+                "metadata": {
+                  "filename": "test.jpg",
+                  "size": 6793,
+                  "mime_type": "image/jpeg"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": []
+      }
+    },
+    "/api/v1/projects/{project_id}/tasks/{task_id}/comments": {
+      "get": {
+        "tags": [
+          "Comments"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "task_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 2,
+                    "text": "Comment Text 4",
+                    "attachment_url": null,
+                    "created_at": "2019-06-09T23:35:38.434Z"
+                  },
+                  {
+                    "id": 3,
+                    "text": "Comment Text 5",
+                    "attachment_url": null,
+                    "created_at": "2019-06-09T23:35:38.437Z"
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Comments"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "description": "Text of a comment"
+                },
+                "attachment": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Id of the attachment"
+                    },
+                    "storage": {
+                      "type": "string",
+                      "description": "Storage of the attachment",
+                      "enum": [
+                        "cache"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "task_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {
+              "Location": {
+                "description": "",
+                "type": "string",
+                "x-example-value": "http://0.0.0.0:2300/api/v1/projects/1/tasks/1/comments/1"
+              }
+            },
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 1,
+                  "text": "Comment Text 0",
+                  "attachment_url": null,
+                  "created_at": "2019-06-09T23:35:37.114Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "422": {
+            "description": "Unprocessable",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "at_least_one": [
+                    "at least one field must be filled"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/api/v1/projects/{project_id}/tasks/{task_id}/comments/{id}": {
+      "get": {
+        "tags": [
+          "Comments"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "task_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 10,
+                  "text": "Comment Text 12",
+                  "attachment_url": null,
+                  "created_at": "2019-06-09T23:35:39.522Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Comments"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "task_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Comments"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "description": "Text of a comment"
+                },
+                "attachment": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "Id of the attachment"
+                    },
+                    "storage": {
+                      "type": "string",
+                      "description": "Storage of the attachment",
+                      "enum": [
+                        "cache"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "task_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 13,
+                  "text": "drugoi text",
+                  "attachment_url": null,
+                  "created_at": "2019-06-09T23:35:40.600Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "422": {
+            "description": "Unprocessable",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "text": [
+                    "size cannot be greater than 50"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/api/v1/projects": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 24,
+                    "title": "Project Title 23",
+                    "created_at": "2019-06-09T23:35:43.549Z"
+                  },
+                  {
+                    "id": 25,
+                    "title": "Project Title 24",
+                    "created_at": "2019-06-09T23:35:43.552Z"
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "required": [
+                "title"
+              ],
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Title of a project"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {
+              "Location": {
+                "description": "",
+                "type": "string",
+                "x-example-value": "http://0.0.0.0:2300/api/v1/projects/23"
+              }
+            },
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 23,
+                  "title": "Project Title 22",
+                  "created_at": "2019-06-09T23:35:43.007Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "422": {
+            "description": "Unprocessable",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "title": [
+                    "is missing"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/api/v1/projects/{id}": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 28,
+                  "title": "Project Title 27",
+                  "created_at": "2019-06-09T23:35:44.078Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Projects"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Title of the project"
+                }
+              }
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 31,
+                  "title": "Project Title 31",
+                  "created_at": "2019-06-09T23:35:45.096Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "422": {
+            "description": "Unprocessable",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "title": [
+                    "size cannot be greater than 50"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/api/v1/projects/{project_id}/tasks": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": [
+                  {
+                    "id": 24,
+                    "title": "Task Title 26",
+                    "done": false,
+                    "position": 26,
+                    "deadline": null,
+                    "created_at": "2019-06-09T23:35:48.719Z"
+                  },
+                  {
+                    "id": 25,
+                    "title": "Task Title 27",
+                    "done": false,
+                    "position": 27,
+                    "deadline": null,
+                    "created_at": "2019-06-09T23:35:48.722Z"
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "required": [
+                "title"
+              ],
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Title of a task"
+                },
+                "deadline": {
+                  "type": "string",
+                  "description": "Deadline of a task"
+                }
+              }
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {
+              "Location": {
+                "description": "",
+                "type": "string",
+                "x-example-value": "http://0.0.0.0:2300/api/v1/projects/38/tasks/23"
+              }
+            },
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 23,
+                  "title": "Task Title 22",
+                  "done": false,
+                  "position": 1,
+                  "deadline": null,
+                  "created_at": "2019-06-09T23:35:47.432Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "422": {
+            "description": "Unprocessable",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "title": [
+                    "is missing"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/api/v1/projects/{project_id}/tasks/{id}": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 32,
+                  "title": "Task Title 34",
+                  "done": false,
+                  "position": 34,
+                  "deadline": null,
+                  "created_at": "2019-06-09T23:35:49.779Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {}
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "required": false,
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "Title of the task"
+                },
+                "done": {
+                  "type": "string",
+                  "description": "Status of the task"
+                },
+                "position": {
+                  "type": "string",
+                  "description": "Position of the task"
+                },
+                "deadline": {
+                  "type": "string",
+                  "description": "Deadline of the task"
+                }
+              }
+            }
+          },
+          {
+            "name": "project_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "data": {
+                  "id": 35,
+                  "title": "Task Title 38",
+                  "done": false,
+                  "position": 1,
+                  "deadline": null,
+                  "created_at": "2019-06-09T23:35:50.815Z"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {}
+          },
+          "422": {
+            "description": "Unprocessable",
+            "schema": {
+              "description": "",
+              "type": "object",
+              "properties": {}
+            },
+            "headers": {},
+            "examples": {
+              "application/json": {
+                "errors": {
+                  "title": [
+                    "size cannot be greater than 50"
+                  ],
+                  "position": [
+                    "must be less than tasks count"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "description": "",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "tags": [
+    {
+      "name": "Refresh",
+      "description": ""
+    },
+    {
+      "name": "Registration",
+      "description": ""
+    },
+    {
+      "name": "Session",
+      "description": ""
+    },
+    {
+      "name": "Attachments",
+      "description": ""
+    },
+    {
+      "name": "Comments",
+      "description": ""
+    },
+    {
+      "name": "Projects",
+      "description": ""
+    },
+    {
+      "name": "Tasks",
+      "description": ""
+    }
+  ]
+}

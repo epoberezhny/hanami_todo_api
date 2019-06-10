@@ -1,0 +1,16 @@
+{
+  "id": "file:/api/v1/attachment.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "storage": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "storage"
+  ]
+}

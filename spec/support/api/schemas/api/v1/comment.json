@@ -1,0 +1,36 @@
+{
+  "id": "file:/api/v1/comment.json",
+  "definitions": {
+    "comment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "text",
+        "created_at"
+      ]
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "$ref": "#/definitions/comment"
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

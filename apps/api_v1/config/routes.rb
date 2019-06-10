@@ -1,5 +1,7 @@
-# Configure your routes here
-# See: http://hanamirb.org/guides/routing/overview/
-#
-# Example:
-# get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }
+resources :projects, except: %i[new edit] do
+  resources :tasks, except: %i[new edit], controller: 'tasks' do
+    resources :comments, except: %i[new edit], controller: 'comments'
+  end
+end
+
+post 'attachments/upload', to: AttachmentUploader.upload_endpoint(:cache)

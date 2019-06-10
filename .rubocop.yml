@@ -1,0 +1,61 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+# Lint ------------------------------------------------------------------------
+
+Lint/HandleExceptions:
+  Exclude:
+    - Rakefile
+
+# Metrics ---------------------------------------------------------------------
+
+Metrics/BlockLength:
+  Exclude:
+    - apps/**/application.rb
+    - spec/**/*
+
+Metrics/LineLength:
+  Max: 120
+
+# Style -----------------------------------------------------------------------
+
+Style/BlockComments:
+  Exclude:
+    - spec/**/*
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# Layout ----------------------------------------------------------------------
+
+Layout/ClassStructure:
+  Enabled: true
+
+Layout/IndentFirstArrayElement:
+  EnforcedStyle: consistent
+
+# RSpec -----------------------------------------------------------------------
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - spec/**/requests/**/*
+
+RSpec/ContextWording:
+  Exclude:
+    - spec/**/requests/**/*
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/ExampleLength:
+  Max: 10
