@@ -1,7 +1,18 @@
 require 'shrine/storage/file_system'
 
 case Hanami.env
-when 'development', 'production'
+when 'production'
+  Cloudinary.config(
+    cloud_name: ENV['CLOUDINARY_CLOUD_NAME'],
+    api_key: ENV['CLOUDINARY_API_KEY'],
+    api_secret: ENV['CLOUDINARY_API_SECRET']
+  )
+
+  Shrine.storages = {
+    cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'),
+    store: Shrine::Storage::Cloudinary.new(prefix: 'store')
+  }
+when 'development'
   Shrine.storages = {
     cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'),
     store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads')

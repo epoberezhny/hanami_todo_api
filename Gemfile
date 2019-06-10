@@ -38,6 +38,7 @@ gem 'jwt_sessions'
 # attachments
 gem 'hanami-shrine', github: 'katafrakt/hanami-shrine'
 gem 'image_processing'
+gem 'shrine-cloudinary', require: 'shrine/storage/cloudinary'
 
 gem 'bootsnap'
 
