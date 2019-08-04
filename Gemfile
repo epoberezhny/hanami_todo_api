@@ -71,5 +71,5 @@ group :test do
   gem 'dry-validation-matchers'
   gem 'json_matchers', require: 'json_matchers/rspec'
 
-  gem 'database_cleaner', github: 'DatabaseCleaner/database_cleaner'
+  gem 'database_cleaner'
 end
