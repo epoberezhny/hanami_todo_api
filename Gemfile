@@ -8,6 +8,7 @@ gem 'rake'
 gem 'hanami', '~> 1.3'
 gem 'puma'
 gem 'puma-heroku'
+gem 'rack-cors'
 
 # persistence
 gem 'hanami-model', '~> 1.3'
@@ -38,8 +39,8 @@ gem 'jwt_sessions'
 
 # attachments
 gem 'hanami-shrine', github: 'katafrakt/hanami-shrine'
-gem 'shrine', '~> 2.19'
 gem 'image_processing'
+gem 'shrine', '~> 2.19'
 gem 'shrine-cloudinary', require: 'shrine/storage/cloudinary'
 
 gem 'bootsnap'
